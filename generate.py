@@ -1,5 +1,9 @@
 import requests
 import csv
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 total_product_count = 0
 fetched_all = False
@@ -8,7 +12,7 @@ PAGE_SIZE = 100
 
 def get_feefo_product_ratings(page = 1):
     params = dict(
-        merchant_identifier='motta-living',
+        merchant_identifier=os.environ['FEEFO_MERCHANT_IDENTIFIER'],
         review_count='true',
         page_size=PAGE_SIZE,
         page=page,
